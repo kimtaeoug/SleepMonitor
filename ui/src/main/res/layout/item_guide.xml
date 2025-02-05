@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="ted.gun0912.sleep.model.Guide" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.Ted.Subtitle"
+            android:text="@{item.title}"
+            android:textColor="@color/guide_title"
+            tools:text="@string/guide_title_1" />
+
+        <TextView
+            style="@style/TextAppearance.Ted.Body"
+            android:layout_marginTop="4dp"
+            android:text="@{item.description}"
+            tools:text="@string/guide_description_1" />
+
+    </LinearLayout>
+</layout>

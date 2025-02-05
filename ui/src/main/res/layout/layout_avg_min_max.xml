@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="avg"
+            type="int" />
+
+        <variable
+            name="min"
+            type="int" />
+
+        <variable
+            name="max"
+            type="int" />
+
+        <variable
+            name="unit"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingHorizontal="32dp"
+        tools:background="@color/windowBackground">
+
+        <include
+            android:id="@+id/view_avg"
+            layout="@layout/item_avg_min_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintEnd_toStartOf="@id/view_min"
+            bind:layout_constraintHorizontal_chainStyle="spread"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:text="@{@string/average}"
+            bind:unit="@{unit}"
+            bind:value="@{avg}" />
+
+        <include
+            android:id="@+id/view_min"
+            layout="@layout/item_avg_min_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintEnd_toStartOf="@id/view_max"
+            bind:layout_constraintStart_toEndOf="@id/view_avg"
+            bind:text="@{@string/min}"
+            bind:unit="@{unit}"
+            bind:value="@{min}" />
+
+        <include
+            android:id="@+id/view_max"
+            layout="@layout/item_avg_min_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toEndOf="@id/view_min"
+            bind:text="@{@string/max}"
+            bind:unit="@{unit}"
+            bind:value="@{max}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

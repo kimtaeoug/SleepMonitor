@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.setting.SettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/borderOnBackground"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.Ted.Subtitle"
+            android:layout_margin="16dp"
+            android:text="@string/profile"
+            android:textColor="@color/gray" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Setting.Menu"
+                android:drawableStart="@drawable/ic_face"
+                android:onClick="@{() -> vm.changeGender()}"
+                android:text="@string/gender" />
+
+            <TextView
+                style="@style/Setting.Value"
+                bind:gender="@{vm.user.gender}"
+                tools:text="남자" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Setting.Menu"
+                android:drawableStart="@drawable/ic_cake"
+                android:onClick="@{() -> vm.changeBirthYear()}"
+                android:text="@string/age" />
+
+            <TextView
+                style="@style/Setting.Value"
+                android:text="@{@string/profile_age_fmt(vm.user.age,vm.user.birthYear)}"
+                tools:text="만 36세 (1986년생)" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Setting.Menu"
+                android:drawableStart="@drawable/ic_sleep_time"
+                android:onClick="@{() -> vm.changeSleepTime()}"
+                android:text="@string/sleep_time" />
+
+            <TextView
+                style="@style/Setting.Value"
+                android:text="@{vm.sleepTimeText}"
+                tools:text="오후 11시 30분" />
+        </FrameLayout>
+
+        <View style="@style/Setting.Divider" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            style="@style/Setting.Menu"
+            android:checked="@{vm.user.needSleepTimeNotification}"
+            android:drawableStart="@drawable/ic_notification"
+            android:foreground="@null"
+            android:onCheckedChangeListener="@{(view, isChecked) -> vm.setSleepTimeNotification(isChecked)}"
+            android:text="@string/sleep_time_alarm" />
+    </LinearLayout>
+
+
+</layout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tab_tint_color">@color/colorPrimary_10</color>
+    <color name="content_background">@color/windowBackground</color>
+
+    <color name="bluetooth_background">#2E7BFE</color>
+
+    <color name="heart">#ec407a</color>
+
+    <color name="calendar_text_color">@color/white_60</color>
+
+    <color name="guide_title">#D7D317</color>
+
+    <color name="bg_tooltip">#CDCBCB</color>
+
+</resources>

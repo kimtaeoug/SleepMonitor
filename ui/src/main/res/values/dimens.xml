@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="onboarding_horizontal_padding">32dp</dimen>
+    <dimen name="onboarding_btn_bottom_margin">60dp</dimen>
+
+</resources>

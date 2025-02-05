@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.measure.MeasureViewModel" />
+
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground"
+        android:visibility="@{!vm.isRecordComplete}">
+
+        <!--<com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1675:660"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/measure_wave2" />-->
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:id="@+id/exo_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:animation_enabled="true"
+            app:keep_content_on_player_reset="true"
+            app:surface_type="texture_view"
+            app:use_controller="false" />
+
+        <LinearLayout
+            android:id="@+id/view_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    style="@style/TextAppearance.Ted.Display"
+                    android:text="@{vm.sleepDurationText}"
+                    android:textColor="@color/gray"
+                    android:textSize="50sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="00:00" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_alarm"
+                    android:tint="@color/label_text_color"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_alarm_time"
+                    app:layout_constraintEnd_toStartOf="@id/tv_alarm_time"
+                    app:layout_constraintTop_toTopOf="@id/tv_alarm_time"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/tv_alarm_time"
+                    style="@style/TextAppearance.Ted.Display"
+                    android:text="@{vm.alarmTimeText}"
+                    android:textColor="@color/label_text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="오전 07:30" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/label_text_color"
+                    app:layout_constraintEnd_toEndOf="@id/tv_alarm_time"
+                    app:layout_constraintStart_toStartOf="@id/tv_alarm_time"
+                    app:layout_constraintTop_toBottomOf="@id/tv_alarm_time" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="32dp">
+
+                <include
+                    android:id="@+id/layout_sleep_chart"
+                    layout="@layout/layout_measure_chart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                layout="@layout/layout_measure_data"
+                bind:vm="@{vm}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!--app:cardBackgroundColor="@color/white_50" -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/view_finish"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="32dp"
+                app:cardBackgroundColor="@color/white_50"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.85">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/progress_sleepstop_btn"
+                        tools:progress="50" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_gravity="center"
+                        android:text="@string/sleep_finish_btn"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>
+
+    <!-- 기존 소스
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+
+            <variable
+                name="vm"
+                type="ted.gun0912.sleep.ui.feature.measure.MeasureViewModel" />
+
+        </data>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ted.gun0912.sleep.ui.feature.measure.SwipeBackLayout
+                android:id="@+id/swipeBackLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{!vm.isRecordComplete}">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/windowBackground">
+
+                    <LinearLayout
+                        android:id="@+id/view_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                style="@style/TextAppearance.Ted.Headline"
+                                android:layout_marginEnd="8dp"
+                                android:text="@{vm.amPmText}"
+                                android:textColor="@color/gray"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_time"
+                                app:layout_constraintEnd_toStartOf="@id/tv_time"
+                                app:layout_constraintTop_toTopOf="@id/tv_time"
+                                tools:text="오후" />
+
+                            <TextView
+                                android:id="@+id/tv_time"
+                                style="@style/TextAppearance.Ted.Display"
+                                android:text="@{vm.timeText}"
+                                android:textColor="@color/gray"
+                                android:textSize="60sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="10:30" />
+
+                            <TextView
+                                style="@style/TextAppearance.Ted.Headline"
+                                android:layout_marginStart="8dp"
+                                android:text="@{vm.secondText}"
+                                android:textColor="@color/gray"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_time"
+                                app:layout_constraintStart_toEndOf="@id/tv_time"
+                                app:layout_constraintTop_toTopOf="@id/tv_time"
+                                tools:text="46" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/ic_alarm"
+                                android:tint="@color/label_text_color"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_alarm_time"
+                                app:layout_constraintEnd_toStartOf="@id/tv_alarm_time"
+                                app:layout_constraintTop_toTopOf="@id/tv_alarm_time"
+                                tools:ignore="UseAppTint" />
+
+                            <TextView
+                                android:id="@+id/tv_alarm_time"
+                                style="@style/TextAppearance.Ted.Display"
+                                android:text="@{vm.alarmTimeText}"
+                                android:textColor="@color/label_text_color"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="오전 07:30" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="@color/label_text_color"
+                                app:layout_constraintEnd_toEndOf="@id/tv_alarm_time"
+                                app:layout_constraintStart_toStartOf="@id/tv_alarm_time"
+                                app:layout_constraintTop_toBottomOf="@id/tv_alarm_time" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="32dp">
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintDimensionRatio="1675:660"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"
+                                app:lottie_rawRes="@raw/measure_wave2" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <include
+                            layout="@layout/layout_measure_data"
+                            bind:vm="@{vm}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="32dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:rotation="-180"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/swipe_to_up" />
+
+                        <TextView
+                            style="@style/TextAppearance.Ted.Subtitle"
+                            android:text="@string/swipe_to_stop"
+                            android:textColor="@color/gray" />
+                    </LinearLayout>
+                </FrameLayout>
+
+            </ted.gun0912.sleep.ui.feature.measure.SwipeBackLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="@{vm.loading}" />
+        </FrameLayout>
+    </layout>
+    -->

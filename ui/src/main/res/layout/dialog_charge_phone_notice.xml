@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.sleep.dialog.ChargePhoneNoticeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/borderOnBackground"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_charge_phone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                style="@style/TextAppearance.Ted.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/charge_phone_notice_title" />
+
+            <TextView
+                style="@style/TextAppearance.Ted.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/charge_phone_notice_description" />
+
+            <CheckBox
+                style="@style/TextAppearance.Ted.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-6dp"
+                android:layout_marginTop="16dp"
+                android:buttonTint="@color/checkbox_tint_gray"
+                android:checked="@={vm.isChecked}"
+                android:text="@string/do_not_show_notice_again"
+                android:textColor="@color/checkbox_tint_gray" />
+
+            <Button
+                android:id="@+id/btn_action"
+                style="@style/Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{() -> vm.startSleep()}"
+                android:text="@string/charge_phone_notice_btn" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

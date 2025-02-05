@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.history.HistoryViewModel" />
+
+        <variable
+            name="isCalendarExpanded"
+            type="boolean" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_background"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_selected_date"
+                    style="@style/TextAppearance.Ted.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:drawableEnd="@{isCalendarExpanded? @drawable/ic_arrow_up : @drawable/ic_arrow_down}"
+                    android:drawablePadding="4dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="16dp"
+                    android:visibility="@{vm.recordDays.size() > 0}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:drawableEnd="@drawable/ic_arrow_down"
+                    tools:ignore="UseCompatTextViewDrawableXml"
+                    tools:text="2022년 8월 15일" />
+
+                <!--android:visibility="@{!vm.recordDays.empty}"-->
+                <Button
+                    android:backgroundTint="@color/colorPrimary"
+                    android:id="@+id/sendRawData"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:onClick="@{()->vm.sendRawData()}"
+                    android:text="raw데이터전송"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/view_sleep_type"
+                    app:layout_constraintStart_toEndOf="@+id/tv_selected_date"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/view_sleep_type"
+                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_selected_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_selected_date">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdown_sleep_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:inputType="none"
+                        android:text="@string/night_sleep"
+                        app:simpleItems="@array/sleep_type_array" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.haibin.calendarview.CalendarLayout
+                android:id="@+id/calendarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:calendar_content_view_id="@id/view_content"
+                app:default_status="shrink">
+
+                <com.haibin.calendarview.CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:calendar_height="46dp"
+                    app:current_day_text_color="@color/calendar_text_color"
+                    app:current_month_text_color="@color/calendar_text_color"
+                    app:month_view="ted.gun0912.sleep.ui.feature.history.calendar.HistoryMonthView"
+                    app:month_view_show_mode="mode_fix"
+                    app:other_month_text_color="@color/white_10"
+                    app:scheme_text_color="@color/white"
+                    app:scheme_theme_color="@color/colorPrimary"
+                    app:select_mode="single_mode"
+                    app:selected_text_color="@color/white"
+                    app:selected_theme_color="@color/colorPrimary"
+                    app:week_background="@color/content_background"
+                    app:week_text_color="@color/calendar_text_color"
+                    app:week_view="ted.gun0912.sleep.ui.feature.history.calendar.HistoryWeekView" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/view_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/content_background"
+                    android:fillViewport="true"
+                    android:visibility="@{vm.recordDays.size() > 0}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ted.gun0912.sleep.ui.widget.DailySleepSummaryView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            bind:dailySleepStatistic="@{vm.dailySleepStatistic}" />
+
+                        <View style="@style/History.Divider" />
+
+                        <TextView
+                            style="@style/TextAppearance.Ted.Title"
+                            android:text="@string/heart_rate" />
+
+                        <include
+                            layout="@layout/layout_avg_min_max"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            bind:avg="@{vm.avgHeartRate}"
+                            bind:max="@{vm.maxHeartRate}"
+                            bind:min="@{vm.minHeartRate}"
+                            bind:unit="@{@string/bpm}" />
+
+                        <ted.gun0912.rangebarchart.RangeBarChart
+                            android:id="@+id/chart_heart"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
+
+                        <View style="@style/History.Divider" />
+
+                        <TextView
+                            style="@style/TextAppearance.Ted.Title"
+                            android:text="@string/respiration_rate" />
+
+                        <include
+                            layout="@layout/layout_avg_min_max"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            bind:avg="@{vm.avgRespirationRate}"
+                            bind:max="@{vm.maxRespirationRate}"
+                            bind:min="@{vm.minRespirationRate}"
+                            bind:unit="@{@string/rpm}" />
+
+                        <ted.gun0912.rangebarchart.RangeBarChart
+                            android:id="@+id/chart_respiration"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
+
+                        <View style="@style/History.Divider" />
+
+                        <TextView
+                            style="@style/TextAppearance.Ted.Title"
+                            android:text="@string/sleep_moving" />
+
+                        <include
+                            layout="@layout/layout_avg_min_max"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            bind:avg="@{vm.avgMoving}"
+                            bind:max="@{vm.maxMoving}"
+                            bind:min="@{vm.minMoving}"
+                            bind:unit="@{@string/count}" />
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/chart_sleep_moving"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </com.haibin.calendarview.CalendarLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{vm.loading}" />
+
+        <TextView
+            style="@style/TextAppearance.Ted.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="32dp"
+            android:text="@string/history_data_empty"
+            android:textColor="?android:textColorSecondary"
+            android:visibility="@{!vm.loading  &amp;&amp; vm.recordDays.empty}" />
+    </FrameLayout>
+</layout>
+

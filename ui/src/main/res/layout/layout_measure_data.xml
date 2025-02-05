@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.measure.MeasureViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            android:layout_marginBottom="10dp"
+            tools:background="@color/windowBackground">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:background="@color/windowBackground">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/heart_rate}"
+                        android:textColor="@color/label_text_color"
+                        tools:text="심박수" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:Data="@{vm.vitalSensorInfo.heartRate}"
+                        bind:Title="@{@string/bpm}"
+                        bind:isDeviceInit="@{vm.isDeviceInit}"
+                        tools:text="92 bpm" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:background="@color/label_text_color_30" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:background="@color/windowBackground">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/respiration_rate}"
+                        android:textColor="@color/label_text_color"
+                        tools:text="호흡수" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:Data="@{vm.vitalSensorInfo.respirationRate}"
+                        bind:Title="@{@string/rpm}"
+                        bind:isDeviceInit="@{vm.isDeviceInit}"
+                        tools:text="92 bpm" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:background="@color/label_text_color_30" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:background="@color/windowBackground">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="온도"
+                        android:textColor="@color/label_text_color"
+                        tools:text="온도" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:EnvData="@{vm.envSensorInfo.temp}"
+                        bind:isDeviceInit="@{vm.isDeviceInit}"
+                        tools:text="92 bpm" />
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            tools:background="@color/windowBackground">
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:background="@color/windowBackground">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="tvoc"
+                        android:textColor="@color/label_text_color"
+                        tools:text="tvoc" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:EnvData="@{vm.envSensorInfo.tvocIdx}"
+                        bind:isDeviceInit="@{vm.isDeviceInit}"
+                        tools:text="92 bpm" />
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:background="@color/label_text_color_30" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:background="@color/windowBackground">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="co2"
+                        android:textColor="@color/label_text_color"
+                        tools:text="co2" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:EnvData="@{vm.envSensorInfo.co2}"
+                        bind:isDeviceInit="@{vm.isDeviceInit}"
+                        tools:text="92 bpm" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:background="@color/label_text_color_30" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:background="@color/windowBackground">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="습도"
+                        android:textColor="@color/label_text_color"
+                        tools:text="습도" />
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:EnvData="@{vm.envSensorInfo.humidity}"
+                        bind:isDeviceInit="@{vm.isDeviceInit}"
+                        tools:text="92 bpm" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:bind="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--    <data>-->
+
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="ted.gun0912.sleep.ui.feature.measure.MeasureViewModel" />-->
+<!--    </data>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingHorizontal="24dp"-->
+<!--            tools:background="@color/windowBackground">-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    tools:background="@color/windowBackground">-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Subtitle"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="tvoc"-->
+<!--                        android:textColor="@color/label_text_color"-->
+<!--                        tools:text="tvoc" />-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Title"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        bind:EnvData="@{vm.envSensorInfo.tvocIdx}"-->
+<!--                        bind:isDeviceInit="@{vm.isDeviceInit}"-->
+<!--                        tools:text="92 bpm" />-->
+<!--                </LinearLayout>-->
+<!--            </FrameLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="1dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginHorizontal="16dp"-->
+<!--                android:layout_marginVertical="8dp"-->
+<!--                android:background="@color/label_text_color_30" />-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    tools:background="@color/windowBackground">-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Subtitle"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="온도"-->
+<!--                        android:textColor="@color/label_text_color"-->
+<!--                        tools:text="온도" />-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Title"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        bind:EnvData="@{vm.envSensorInfo.temp}"-->
+<!--                        bind:isDeviceInit="@{vm.isDeviceInit}"-->
+<!--                        tools:text="92 bpm" />-->
+
+<!--                </LinearLayout>-->
+<!--            </FrameLayout>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingHorizontal="24dp"-->
+<!--            tools:background="@color/windowBackground">-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    tools:background="@color/windowBackground">-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Subtitle"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="co2"-->
+<!--                        android:textColor="@color/label_text_color"-->
+<!--                        tools:text="co2" />-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Title"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        bind:EnvData="@{vm.envSensorInfo.co2}"-->
+<!--                        bind:isDeviceInit="@{vm.isDeviceInit}"-->
+<!--                        tools:text="92 bpm" />-->
+<!--                </LinearLayout>-->
+<!--            </FrameLayout>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="1dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginHorizontal="16dp"-->
+<!--                android:layout_marginVertical="8dp"-->
+<!--                android:background="@color/label_text_color_30" />-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    tools:background="@color/windowBackground">-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Subtitle"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="습도"-->
+<!--                        android:textColor="@color/label_text_color"-->
+<!--                        tools:text="습도" />-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextAppearance.Ted.Title"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        bind:EnvData="@{vm.envSensorInfo.humidity}"-->
+<!--                        bind:isDeviceInit="@{vm.isDeviceInit}"-->
+<!--                        tools:text="92 bpm" />-->
+
+<!--                </LinearLayout>-->
+<!--            </FrameLayout>-->
+
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+<!--</layout>-->
+
+<!--    &lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--    &lt;!&ndash;<layout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+<!--    &lt;!&ndash;    xmlns:bind="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
+<!--    &lt;!&ndash;    xmlns:tools="http://schemas.android.com/tools">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <data>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <variable&ndash;&gt;-->
+<!--    &lt;!&ndash;            name="vm"&ndash;&gt;-->
+<!--    &lt;!&ndash;            type="ted.gun0912.sleep.ui.feature.measure.MeasureViewModel" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    </data>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;        >&ndash;&gt;-->
+<!--    &lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:orientation="horizontal"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:paddingHorizontal="24dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_marginBottom="10dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <FrameLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_weight="1">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Subtitle"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:text="@{@string/heart_rate}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:textColor="@color/label_text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="심박수" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Title"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:Data="@{vm.vitalSensorInfo.heartRate}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:Title="@{@string/bpm}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:isDeviceInit="@{vm.isDeviceInit}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="92 bpm" />&ndash;&gt;-->
+<!--    &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </FrameLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <View&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="1dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginHorizontal="16dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginVertical="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:background="@color/label_text_color_30" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <FrameLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_weight="1">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Subtitle"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:text="@{@string/respiration_rate}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:textColor="@color/label_text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="호흡수" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Title"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:Data="@{vm.vitalSensorInfo.respirationRate}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:Title="@{@string/rpm}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:isDeviceInit="@{vm.isDeviceInit}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="92 bpm" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </FrameLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <View&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="1dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginHorizontal="16dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginVertical="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:background="@color/label_text_color_30" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <FrameLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_weight="1">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Subtitle"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:text="온도"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:textColor="@color/label_text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="온도" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Title"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:EnvData="@{vm.envSensorInfo.temp}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:isDeviceInit="@{vm.isDeviceInit}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="92 bpm" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </FrameLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:orientation="horizontal"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:paddingHorizontal="24dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            tools:background="@color/windowBackground">&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;            <FrameLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_weight="1">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Subtitle"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:text="tvoc"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:textColor="@color/label_text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="tvoc" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Title"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:EnvData="@{vm.envSensorInfo.tvocIdx}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:isDeviceInit="@{vm.isDeviceInit}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="92 bpm" />&ndash;&gt;-->
+<!--    &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </FrameLayout>&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;            <View&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="1dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginHorizontal="16dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginVertical="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:background="@color/label_text_color_30" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <FrameLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_weight="1">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Subtitle"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:text="co2"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:textColor="@color/label_text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="co2" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Title"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:EnvData="@{vm.envSensorInfo.co2}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:isDeviceInit="@{vm.isDeviceInit}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="92 bpm" />&ndash;&gt;-->
+<!--    &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </FrameLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <View&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="1dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginHorizontal="16dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_marginVertical="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:background="@color/label_text_color_30" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            <FrameLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                android:layout_weight="1">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--    &lt;!&ndash;                    tools:background="@color/windowBackground">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Subtitle"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:text="습도"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:textColor="@color/label_text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="습도" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;                        style="@style/TextAppearance.Ted.Title"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:EnvData="@{vm.envSensorInfo.humidity}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        bind:isDeviceInit="@{vm.isDeviceInit}"&ndash;&gt;-->
+<!--    &lt;!&ndash;                        tools:text="92 bpm" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </FrameLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;</layout>&ndash;&gt;-->

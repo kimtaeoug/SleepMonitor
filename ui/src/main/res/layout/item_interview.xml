@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.interview.InterviewViewModel" />
+
+        <variable
+            name="item"
+            type="ted.gun0912.sleep.model.Interview" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/borderOnBackground"
+            app:rippleColor="@color/windowBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.date}"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    tools:text="interview" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btn_action"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:enabled="@{!item.sleepInterviewDone}"
+                        android:onClick="@{() -> vm.startSleepInterview(item)}"
+                        android:text="수면질 문진 시작" />
+
+                    <Button
+                        android:id="@+id/btn_action2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="@{!item.painInterviewDone}"
+                        android:text="통증 문진 시작"
+                        android:onClick="@{() -> vm.startPainInterview(item)}"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>

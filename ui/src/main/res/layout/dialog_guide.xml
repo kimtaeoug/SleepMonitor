@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="ted.gun0912.sleep.ui.feature.setting.dialog.GuideDialogFragment" />
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.setting.dialog.GuideViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/borderOnBackground"
+        android:orientation="vertical">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:nestedScrollingEnabled="false"
+            android:padding="24dp"
+            app:dino_itemLayout="@{@layout/item_guide}"
+            app:dino_itemSpace="@{`16dp`}"
+            app:dino_items="@{view.guideItems}"
+            app:dino_vm="@{vm}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_guide" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{() -> vm.finish()}"
+            android:padding="8dp"
+            android:src="@drawable/ic_close" />
+    </FrameLayout>
+</layout>

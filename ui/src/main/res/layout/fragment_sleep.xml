@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.sleep.SleepViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:id="@+id/exo_player_view"
+            app:animation_enabled="true"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:keep_content_on_player_reset="true"
+            app:surface_type="texture_view"
+            app:use_controller="false" />
+
+        <!--<com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_bluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/background_night" />-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/layout_sleep_chart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Headline"
+                    android:text="@string/alarm_time_title"
+                    android:textStyle="bold" />
+
+                <ted.gun0912.sleep.ui.widget.SleepTimePicker
+                    android:id="@+id/time_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Widget.Ted.TimePicker"
+                    android:timePickerMode="spinner" />
+
+                <Button
+                    android:id="@+id/btn_action"
+                    style="@style/Button.Primary"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:enabled="@{vm.isDeviceConnected}"
+                    android:onClick="@{() -> vm.startSleep()}"
+                    android:text="@string/sleep_start" />
+
+            </LinearLayout>
+
+            <!--android:visibility="@{vm.showVitalInfo}"android:visibility="@{vm.showVitalInfo}" -->
+            <include
+                android:id="@+id/layout_sleep_chart"
+                layout="@layout/layout_sleep_chart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                bind:vm="@{vm}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <include
+            layout="@layout/layout_device_disconnected"
+            android:visibility="@{vm.isDeviceDisconnected}"
+            bind:vm="@{vm}"
+            tools:visibility="invisible" />
+
+        <include
+            layout="@layout/layout_device_connecting"
+            android:visibility="@{vm.needShowConnecting}"
+            bind:vm="@{vm}"
+            tools:visibility="invisible" />
+
+        <FrameLayout
+            android:id="@+id/container_measure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </FrameLayout>
+</layout>

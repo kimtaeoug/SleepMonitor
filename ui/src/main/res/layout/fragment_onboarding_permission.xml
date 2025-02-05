@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        tools:background="@color/black_p50"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/onboarding_horizontal_padding">
+<!--
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_bluetooth"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/permission" />
+-->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_description"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_intro2"
+                />
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/tv_description"
+                style="@style/TextAppearance.Ted.Subtitle"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="@string/onboarding_permission_text"
+                app:layout_constraintBottom_toTopOf="@id/btn_action"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btn_action"
+                style="@style/Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/onboarding_btn_bottom_margin"
+                android:text="@string/onboarding_permission_btn"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

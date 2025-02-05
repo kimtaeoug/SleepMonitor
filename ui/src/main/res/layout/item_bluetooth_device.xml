@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.onboarding.scan.OnBoardingScanViewModel" />
+
+        <variable
+            name="item"
+            type="ted.gun0912.sleep.model.BluetoothDevice" />
+
+        <variable
+            name="adapterPosition"
+            type="int" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:background="@color/white"
+            android:onClick="@{() -> vm.selectDevice(item)}"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="5dp"
+            app:rippleColor="@color/windowBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.name}"
+                    android:textColor="@color/windowBackground"
+                    android:textStyle="bold"
+                    tools:text="Nordic_UART2" />
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{item.address}"
+                    android:textColor="@color/gray"
+                    tools:text="D3:4D:49:59:2A:96" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>

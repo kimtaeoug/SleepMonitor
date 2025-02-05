@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3acffe</color>
+    <color name="colorPrimaryDark">#1aafde</color>
+
+    <color name="colorPrimary_10">#1A3acffe</color>
+    <color name="colorPrimary_20">#333acffe</color>
+    <color name="colorPrimary_30">#433acffe</color>
+    <color name="colorPrimary_50">#803acffe</color>
+    <color name="colorPrimary_60">#983acffe</color>
+    <color name="colorPrimary_70">#b13acffe</color>
+    <color name="colorPrimary_80">#e53acffe</color>
+    <color name="colorPrimaryPressed">#08A0CE</color>
+
+    <color name="colorAccent">#db7100</color>
+    <color name="colorAccent_10">#1Adb7100</color>
+    <color name="colorAccent_20">#33db7100</color>
+    <color name="colorAccent_32">#52db7100</color>
+    <color name="colorAccent_50">#80db7100</color>
+
+    <color name="windowBackground">#061620</color>
+    <color name="windowBackground_50">#80061620</color>
+    <color name="windowBackground_70">#B3061620</color>
+    <!--<color name="windowBackground">#1C1D30</color>-->
+    <color name="borderOnBackground">#122d3a</color>
+    <color name="windowBackground_divider">#ff0a374a</color>
+
+    <color name="chart_label">#a0c8d8</color>
+    <color name="label_text_color">#7799a6</color>
+    <color name="label_text_color_30">#7799a6</color>
+
+    <color name="divider">#f1f1f1</color>
+    <color name="gray">#919191</color>
+    <color name="gray_20">#33919191</color>
+    <color name="gray_50">#80919191</color>
+    <color name="gray3">#e9edf4</color>
+    <color name="gray2">#dedede</color>
+
+    <color name="toast_success">@color/colorPrimary</color>
+    <color name="toast_error">#ed7583</color>
+    <color name="white">#ffffff</color>
+    <color name="white_10">#1AFFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="white_30">#4DFFFFFF</color>
+    <color name="white_40">#66FFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_90">#e6FFFFFF</color>
+
+    <color name="transparent">@android:color/transparent</color>
+
+
+</resources>

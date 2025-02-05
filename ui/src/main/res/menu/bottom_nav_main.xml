@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@id/navigation_sleep"
+        android:icon="@drawable/ic_tab_sleep"
+        android:title="@string/tab_sleep" />
+
+    <item
+        android:id="@id/navigation_history"
+        android:icon="@drawable/ic_tab_history"
+        android:title="@string/tab_history" />
+
+    <item
+        android:id="@id/navigation_interview"
+        android:icon="@drawable/ic_tab_interview"
+        android:title="@string/tab_interview" />
+
+    <item
+        android:id="@id/navigation_setting"
+        android:icon="@drawable/ic_tab_setting"
+        android:title="@string/tab_setting" />
+
+</menu>

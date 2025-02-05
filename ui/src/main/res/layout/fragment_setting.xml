@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.setting.SettingViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_background"
+        android:fitsSystemWindows="true">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <include
+                    layout="@layout/layout_profile"
+                    bind:vm="@{vm}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/borderOnBackground"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_margin="16dp"
+                        android:text="@string/setting"
+                        android:textColor="@color/gray" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Setting.Menu"
+                        android:visibility="gone"
+                        android:checked="@{vm.showVitalInfo}"
+                        android:drawableStart="@drawable/ic_line_chart"
+                        android:foreground="@null"
+                        android:onCheckedChangeListener="@{(view, isChecked) -> vm.setShowVitalInfo(isChecked)}"
+                        android:text="@string/sleep_data_visible" />
+
+                    <View style="@style/Setting.Divider" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:onClick="@{() -> vm.changeDeviceName()}">
+
+                        <TextView
+                            style="@style/Setting.Menu"
+                            android:drawableStart="@drawable/ic_edit"
+                            android:text="@string/device_name" />
+
+                        <TextView
+                            style="@style/Setting.Value"
+                            android:text="@{vm.myDevice.name}" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/borderOnBackground"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        android:layout_margin="16dp"
+                        android:text="@string/etc"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        style="@style/Setting.Menu"
+                        android:drawableStart="@drawable/ic_article"
+                        android:onClick="@{() -> vm.showGuide()}"
+                        android:text="@string/guide" />
+
+                    <View style="@style/Setting.Divider" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_app_version"
+                            style="@style/Setting.Menu"
+                            android:drawableStart="@drawable/ic_info"
+                            android:text="@string/app_version" />
+
+                        <TextView
+                            style="@style/Setting.Value"
+                            android:text="@{vm.versionName.value}"
+                            tools:text="1.1.0" />
+                    </FrameLayout>
+
+                    <View style="@style/Setting.Divider" />
+
+                    <FrameLayout
+                        android:id="@+id/view_device_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/Setting.Menu"
+                            android:drawableStart="@drawable/ic_device"
+                            android:text="@string/device_id" />
+
+                        <TextView
+                            android:id="@+id/tv_device_id"
+                            style="@style/Setting.Value"
+                            android:text="@{vm.device.deviceId}"
+                            tools:text="a1kdjru" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+</layout>

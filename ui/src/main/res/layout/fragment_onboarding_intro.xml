@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        tools:background="@color/black_p50"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<!--
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_onboarding_intro" />
+-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/onboarding_horizontal_padding">
+
+            <ImageView
+                android:src="@drawable/turing_logo"
+                android:layout_width="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_description"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/tv_description"
+                style="@style/TextAppearance.Ted.Subtitle"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="@string/onboarding_intro_text"
+                app:layout_constraintBottom_toTopOf="@id/btn_action"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btn_action"
+                style="@style/Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/onboarding_btn_bottom_margin"
+                android:text="@string/onboarding_intro_btn"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

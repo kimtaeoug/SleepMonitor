@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ted.gun0912.sleep.ui.feature.sleep.SleepViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_window_background_radius_32"
+        android:padding="16dp"
+        tools:showIn="@layout/fragment_sleep">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/view_heart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/borderOnBackground"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/view_respiration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_heart_title"
+                    style="@style/TextAppearance.Ted.Title"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:lines="2"
+                    android:text="@string/heart_rate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart_heart"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="2:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_heart_title" />
+
+                <LinearLayout
+                    android:id="@+id/view_heart_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/chart_heart"
+                    bind:invisible="@{vm.vitalSensorInfo.stateValue &lt;=0 || vm.vitalSensorInfo.respirationRate &lt;=0}">
+                    <!--bind:invisible="@{vm.vitalSensorInfo.instantHR &lt;=0 }">-->
+
+                    <TextView
+                        android:visibility="@{vm.isDeviceInit == true}"
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        bind:bleData="@{vm.vitalSensorInfo.heartRate}"
+                        tools:text="95" />
+
+                    <TextView
+                        android:visibility="@{vm.isDeviceInit == true}"
+                        style="@style/TextAppearance.Ted.Body"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/bpm"
+                        android:textColor="?android:textColorSecondary" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Subtitle"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="@{vm.vitalSensorInfo.state.isNotStable}"
+                    app:layout_constraintBottom_toBottomOf="@id/view_heart_count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_heart_count"
+                    bind:state="@{vm.vitalSensorInfo.state}"
+                    bind:init="@{vm.isDeviceInit}"
+                    tools:text="부재" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/view_respiration"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            app:cardBackgroundColor="@color/borderOnBackground"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/view_heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_heart"
+            app:layout_constraintTop_toTopOf="@id/view_heart">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_respiration_title"
+                    style="@style/TextAppearance.Ted.Title"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:lines="2"
+                    android:text="@string/respiration_rate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart_respiration"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintDimensionRatio="2:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_respiration_title" />
+
+                <LinearLayout
+                    android:id="@+id/view_respiration_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/chart_respiration"
+                    bind:invisible="@{vm.vitalSensorInfo.stateValue &lt;=0 || vm.vitalSensorInfo.respirationRate &lt;=0}">
+                    <!--bind:invisible="@{vm.vitalSensorInfo.respirationRate &lt;=0 }">-->
+
+                    <TextView
+                        android:visibility="@{vm.isDeviceInit == true}"
+                        style="@style/TextAppearance.Ted.Subtitle"
+                        bind:bleData="@{vm.vitalSensorInfo.respirationRate}"
+                        tools:text="95" />
+
+                    <TextView
+                        android:visibility="@{vm.isDeviceInit == true}"
+                        style="@style/TextAppearance.Ted.Body"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/rpm"
+                        android:textColor="?android:textColorSecondary" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Subtitle"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="@{vm.vitalSensorInfo.state.isNotStable}"
+                    app:layout_constraintBottom_toBottomOf="@id/view_respiration_count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_respiration_count"
+                    bind:state="@{vm.vitalSensorInfo.state}"
+                    bind:init="@{vm.isDeviceInit}"
+                    tools:text="부재" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

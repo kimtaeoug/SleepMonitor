@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="valueText"
+            type="String" />
+
+        <variable
+            name="isDeviceInit"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@color/windowBackground">
+
+        <TextView
+            style="@style/TextAppearance.Ted.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{title}"
+            android:textColor="@color/label_text_color"
+            tools:text="심박수" />
+
+        <TextView
+            style="@style/TextAppearance.Ted.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{valueText}"
+            tools:text="92 bpm" />
+
+    </LinearLayout>
+</layout>

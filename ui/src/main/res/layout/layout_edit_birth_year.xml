@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?attr/dialogPreferredPadding"
+        android:paddingTop="?attr/dialogPreferredPadding"
+        android:paddingEnd="?attr/dialogPreferredPadding">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="@string/birth_year"
+            app:errorEnabled="true"
+            app:startIconDrawable="@drawable/ic_cake"
+            app:suffixText="@string/birth_year_suffix">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_birth_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:textAlignment="textEnd" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </FrameLayout>
+</layout>

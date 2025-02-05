@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 수면 점수-->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_sleep_score" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_sleep_score"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 심박수-->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_heart_rate" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_heart_rate"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 수면시간 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_sleep_duration" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_sleep_duration"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 수면효율 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_sleep_efficiency" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_sleep_efficiency"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 수면 규칙 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/sleep_pattern" />
+
+        <ted.gun0912.rangebarchart.RangeBarChart
+            android:id="@+id/chart_sleep_pattern"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 잠든시간 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_sleep_time" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_sleep_time"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 일어난 시간 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_wake_up_time" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_wake_up_time"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 뒤척임 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_moving" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_moving"
+            style="@style/Dashboard.Chart" />
+
+        <!-- 뒤척임 지수 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_moving_index" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_moving_index"
+            style="@style/Dashboard.Chart" />
+        <!-- 호흡 장애지수 -->
+        <View style="@style/Dashboard.Divider" />
+
+        <TextView
+            style="@style/Dashboard.Title"
+            android:text="@string/dashboard_summary_respiratory_distress" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_respiratory_distress"
+            style="@style/Dashboard.Chart" />
+
+    </LinearLayout>
+
+
+</layout>

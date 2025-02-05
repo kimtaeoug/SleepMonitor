@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ted.gun0912.sleep.bluetooth">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE"></uses-permission>
+    <application>
+        <service
+            android:name=".uart.UARTService"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"
+            />
+    </application>
+</manifest>

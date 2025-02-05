@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="indicator"
+            type="String" />
+
+        <variable
+            name="hideIndicator"
+            type="boolean" />
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="valueText"
+            type="String" />
+
+        <variable
+            name="icon"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="tooltipClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{tooltipClickListener}"
+        android:background="@color/borderOnBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <!--android:textColor="?android:textColorSecondary"-->
+            <TextView
+                style="@style/TextAppearance.Ted.Caption"
+                android:layout_marginBottom="2dp"
+                android:text="@{indicator}"
+                android:textColor="#FFFFFF"
+                bind:gone="@{hideIndicator}"
+                tools:text="평균" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextAppearance.Ted.Body"
+                    android:text="@{title}"
+                    tools:text="수면 점수" />
+
+                <!--
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:onClick="@{tooltipClickListener}"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_info"
+                    android:visibility="@{tooltipClickListener != null}" />-->
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- android:text="@{valueText}" -->
+                <TextView
+                    style="@style/TextAppearance.Ted.Title"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:text="@{valueText}"
+                    tools:text="오후 10:45" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:src="@{icon}"
+                    tools:src="@drawable/ic_dashboard_sleep" />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
