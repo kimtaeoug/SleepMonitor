@@ -8,11 +8,10 @@
 
 </div>
 
-## IntroDuction
-
-Company : TuringBio
-Desc : BLE 기반 수면 모니터링 및 분석 서비스
-주요 기능 : 수면 모니터링, 수면 관련 분석, 수면 질 관련 챗봇 기능등
+## IntroDuction  
+Company : TuringBio  
+Desc : BLE 기반 수면 모니터링 및 분석 서비스  
+주요 기능 : 수면 모니터링, 수면 관련 분석, 수면 질 관련 챗봇 기능등  
 <div align="left">
 <table>
    <tr>
