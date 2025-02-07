@@ -45,7 +45,7 @@ Desc : BLE 기반 수면 모니터링 및 분석 서비스
 <details>
     <summary>Common 및 Component 재개발</summary>
  <pre>
-  ㆍ Desc : Compose 활용 Common 및 Component 재개발
+  ㆍ Desc : Compose 활용 Page 및 Component 재개발
   ㆍ Stack : Compose</pre>
 [Github Code](https://github.com/kimtaeoug/SleepMonitor/tree/main/common)
 [Github Code](https://github.com/kimtaeoug/SleepMonitor/tree/main/component)
